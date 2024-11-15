@@ -97,19 +97,81 @@ const arr = [1, 2, 3];
 //     console.log(arr === array);
 // })
 
-// Array.prototype.myForEach = function (cbFn) {
-//     for(let i = 0; i < this.length; i++) {
-//         cbFn(this[i], i, this)
-//     }
-// }
+Array.prototype.myForEach = function (cbFn) {
+    for(let i = 0; i < this.length; i++) {
+        cbFn(this[i], i, this)
+    }
+}
 
 // forEach vs map
-console.log(arr.forEach(function(ele){
+console.log(arr.myForEach(function(ele){
     return ele;
 }))
-console.log(arr.map(function(ele){
-    return ele;
+
+
+Array.prototype.myMap = function (cbFn) {
+    const arr = []
+    for(let i = 0; i < this.length; i++) {
+        arr.push(cbFn(this[i]))
+    }
+    return arr;
+}
+
+console.log(arr.myMap(function(ele){
+        return ele + 1; 
 }))
+
+const x = arr.filter(a=> a < 2);
+
+Array.prototype.myFilter = function(cbFn) {
+    const arr = []
+    for(let i=0; i < this.length; i++) {
+       if(cbFn(this[i])){
+        arr.push(this[i]);
+       }
+    }
+    return arr;
+}
+
+console.log(arr.myFilter(function(ele){
+    return ele < 2;    
+}))
+
+
+const reducer = function(acc, cur) {
+    return acc + cur;
+}
+
+console.log(arr.reduce(reducer, 2));
+// acc cur 
+// 0 + 1 ;    -> 1
+// 1 + 2 -> 3
+// 3 + 3 -> 6
+
+
+//'abc'  -> 'aabbcc'
+
+const reducerString = function(acc, cur) {
+    // const arr = 
+    return acc + cur + cur;
+}
+
+// a => a
+// a + b = ab
+// ab + c = abc
+
+const s = 'abc';
+console.log(s.split('').reduce(reducerString, ''));
+
+// hw: myReduce
+
+
+
+
+
+
+
+
 
 
 
