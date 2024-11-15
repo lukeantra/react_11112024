@@ -156,9 +156,9 @@ const reducerString = function(acc, cur) {
     return acc + cur + cur;
 }
 
-// a => a
-// a + b = ab
-// ab + c = abc
+//
+// a + b + b = abb
+// abb + c + c = abbcc
 
 const s = 'abc';
 console.log(s.split('').reduce(reducerString, ''));
