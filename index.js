@@ -160,10 +160,12 @@ const reducerString = function(acc, cur) {
 // a + b + b = abb
 // abb + c + c = abbcc
 
+
 const s = 'abc';
 console.log(s.split('').reduce(reducerString, ''));
 
 // hw: myReduce
+
 
 
 
